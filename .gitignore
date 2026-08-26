@@ -1,0 +1,28 @@
+# Ignore heavy video source files (keep repo clean and lightweight)
+*.mp4
+*.MOV
+*.avi
+*.mkv
+*.webm
+
+# Ignore Python cache and compilation files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore OS metadata
+Thumbs.db
+.DS_Store
+
+# Ignore IDE settings
+.vscode/
+.idea/
+.gemini/
+
+# Ignore generated frame preview folders (previews are for local debugging only)
+**/preview/
+
+# Exclude private local project folders (only OLEDVideo_Firework is shared on GitHub)
+OLEDVideo/
+OLEDVideo3/
