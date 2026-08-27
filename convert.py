@@ -308,6 +308,12 @@ void setup() {{
   }}
   
   Serial.println("SSD1306 initialized successfully.");
+  
+  // Set Display Clock Divide Ratio/Oscillator Frequency (Command 0xD5)
+  // Maximize internal oscillator frequency to eliminate camera banding and flicker
+  display.ssd1306_command(0xD5);
+  display.ssd1306_command(0xF0);
+
   display.clearDisplay();
   display.display();
   
@@ -390,11 +396,11 @@ def main():
                 print(f"[ERROR] Input video file '{INPUT_VIDEO}' not found at root or project folder.")
                 sys.exit(1)
                 
-    # 4. Copy video file inside project directory to make it self-contained
+    # 4. Move video file inside project directory to make it self-contained
     dest_video_path = os.path.join(OUTPUT_PROJECT, os.path.basename(video_file))
     if os.path.abspath(video_file) != os.path.abspath(dest_video_path):
-        print(f"Copying video file '{video_file}' to '{dest_video_path}'...")
-        shutil.copy2(video_file, dest_video_path)
+        print(f"Moving video file '{video_file}' to '{dest_video_path}'...")
+        shutil.move(video_file, dest_video_path)
         video_file = dest_video_path
             
     info = get_video_info(video_file)

@@ -59,7 +59,7 @@ If you want to convert a new video and create a matching Arduino project from sc
     ```
 3.  **Automatic Scaffolding**: The script will automatically:
     *   Derive the project name (`OLEDVideo_dance`) and create that folder.
-    *   Copy the video file inside it to keep it self-contained (`OLEDVideo_dance/dance.mp4`).
+    *   Move the video file inside it to keep it self-contained (`OLEDVideo_dance/dance.mp4`).
     *   Generate the Arduino sketch matching the folder name (`OLEDVideo_dance/OLEDVideo_dance.ino`).
     *   Generate `OLEDVideo_dance/frames.h` (the packed bitmap arrays) and the local previews.
 4.  **Ready to Upload**: The new folder is now completely self-contained. Simply open the sketch in the Arduino IDE and flash it!

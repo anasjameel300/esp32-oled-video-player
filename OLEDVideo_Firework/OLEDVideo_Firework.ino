@@ -84,6 +84,12 @@ void setup() {
   }
   
   Serial.println("SSD1306 initialized successfully.");
+  
+  // Set Display Clock Divide Ratio/Oscillator Frequency (Command 0xD5)
+  // Maximize internal oscillator frequency to eliminate camera banding and flicker
+  display.ssd1306_command(0xD5);
+  display.ssd1306_command(0xF0);
+
   display.clearDisplay();
   display.display();
   
