@@ -38,6 +38,35 @@ def parse_arguments():
         print()
         sys.exit(0)
         
+    if len(sys.argv) == 1:
+        # Search the root directory for any video files
+        video_extensions = {".mp4", ".mov", ".avi", ".mkv", ".webm"}
+        root_videos = []
+        for file in os.listdir("."):
+            if os.path.isfile(file):
+                _, ext = os.path.splitext(file)
+                if ext.lower() in video_extensions:
+                    root_videos.append(file)
+        
+        if len(root_videos) == 1:
+            INPUT_VIDEO = root_videos[0]
+            # Automatically derive target project name
+            video_name = os.path.splitext(os.path.basename(INPUT_VIDEO))[0]
+            clean_name = re.sub(r'[^a-zA-Z0-9_]', '_', video_name)
+            OUTPUT_PROJECT = f"OLEDVideo_{clean_name}"
+            print(f"Auto-detected video file at root: '{INPUT_VIDEO}'")
+            print(f"Automatically set target project directory: '{OUTPUT_PROJECT}'")
+        elif len(root_videos) > 1:
+            # Sort by modification time to find the newest one
+            root_videos.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+            INPUT_VIDEO = root_videos[0]
+            video_name = os.path.splitext(os.path.basename(INPUT_VIDEO))[0]
+            clean_name = re.sub(r'[^a-zA-Z0-9_]', '_', video_name)
+            OUTPUT_PROJECT = f"OLEDVideo_{clean_name}"
+            print(f"[WARNING] Multiple video files detected in the root directory: {root_videos}")
+            print(f"Auto-detected newest video: '{INPUT_VIDEO}'")
+            print(f"Automatically set target project directory: '{OUTPUT_PROJECT}'")
+
     if len(sys.argv) > 1:
         INPUT_VIDEO = sys.argv[1]
     if len(sys.argv) > 2:

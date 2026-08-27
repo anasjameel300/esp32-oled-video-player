@@ -23,6 +23,8 @@ Thumbs.db
 # Ignore generated frame preview folders (previews are for local debugging only)
 **/preview/
 
-# Exclude private local project folders (only OLEDVideo_Firework is shared on GitHub)
-OLEDVideo/
-OLEDVideo3/
+# Exclude all local project folders by default
+OLEDVideo*/
+
+# Except for the public template project to share on GitHub
+!OLEDVideo_Firework/
