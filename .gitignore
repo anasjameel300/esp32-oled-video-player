@@ -1,24 +1,64 @@
 # Ignore heavy video source files (keep repo clean and lightweight)
 *.mp4
 *.MOV
+*.mov
 *.avi
 *.mkv
 *.webm
+
+# Ignore large archive / zip files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+# Executables & Binaries (e.g. local FFmpeg tools)
+*.exe
+*.dll
+*.so
+*.dylib
+ffmpeg.exe
+ffprobe.exe
+ffplay.exe
 
 # Ignore Python cache and compilation files
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.egg-info/
+dist/
+build/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Scratch and temporary directories
+scratch/
+temp/
+tmp/
+*.log
 
 # Ignore OS metadata
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 .DS_Store
 
 # Ignore IDE settings
 .vscode/
 .idea/
 .gemini/
+
+# Arduino / PlatformIO Build Artifacts
+*.bin
+*.hex
+*.elf
 
 # Ignore generated frame preview folders (previews are for local debugging only)
 **/preview/
